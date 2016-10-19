@@ -26,7 +26,7 @@ app.post('/process',function (req, res) {
         user: 'root',
         password: '',
         port: '3306',
-        database: 'weather'             //数据库名称
+        database: 'wifistation'             //数据库名称
     });
 
 //建立连接
@@ -39,7 +39,7 @@ app.post('/process',function (req, res) {
     });
 
 
-    var insertSQL = 'insert into weather_data(tem,hum,light) values(?,?,?)';
+    var insertSQL = 'insert into weatherdata(tem,hum,light) values(?,?,?)';
     var Params = [response.tem, response.hum, response.light];
 //执行查询
     connection.query(insertSQL, Params, function (err, result) {
