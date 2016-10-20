@@ -9,8 +9,8 @@
 //光照
 #define  sensorPin_1  A0
 
-#define SSID           "MEEZAO_WIFI"                   // cannot be longer than 32 characters!
-#define PASSWORD       "meezao2014"
+#define SSID           "wzy_bupt"                   // cannot be longer than 32 characters!
+#define PASSWORD       "12345678"
 // Security can be WLAN_SEC_UNSEC, WLAN_SEC_WEP, WLAN_SEC_WPA or WLAN_SEC_WPA2
 #define WLAN_SECURITY   WLAN_SEC_WPA2
 
@@ -19,7 +19,7 @@
                                    // you're accessing is quick to respond, you can reduce this value.
 
 //WEBSITE     
-#define HOST_NAME    "192.168.31.91"             //可改成自己的服务器地址和端口
+#define HOST_NAME    "192.168.43.60"             //可改成自己的服务器地址和端口
 #define HOST_PORT   (3005)
 
 //3,传感器值的设置 
