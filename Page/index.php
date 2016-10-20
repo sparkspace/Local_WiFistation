@@ -3,9 +3,9 @@ include "php/database.php";
 
 $conn = connectDB();
 
-$result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY did DESC LIMIT 0,1',$conn);
-$result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY did DESC LIMIT 0,1',$conn);
-$result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY did DESC LIMIT 0,1',$conn);
+$result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,1',$conn);
+$result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,1',$conn);
+$result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,1',$conn);
 
 $result_tem_arr = mysql_fetch_assoc($result_tem);
 $result_hum_arr = mysql_fetch_assoc($result_hum);

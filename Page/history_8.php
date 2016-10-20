@@ -3,13 +3,13 @@
     $conn = connectDB();
 
     //取之前8小时数据
-    $result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY did DESC LIMIT 0,54',$conn);
+    $result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,54',$conn);
     $json_tem = average($result_tem,8,'temperature');
 
-    $result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY did DESC LIMIT 0,54',$conn);
+    $result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,54',$conn);
     $json_hum = average($result_hum,8,'humidity');
 
-    $result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY did DESC LIMIT 0,54',$conn);
+    $result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,54',$conn);
     $json_ill = average($result_ill,8,'lightness');
     $status = weather();                        //更换背景图片
 ?>
