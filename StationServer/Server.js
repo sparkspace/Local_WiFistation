@@ -39,8 +39,8 @@ app.post('/process',function (req, res) {
     });
 
 
-    var insertSQL = 'insert into weatherdata(tem,hum,light) values(?,?,?)';
-    var Params = [response.tem, response.hum, response.light];
+    var insertSQL = 'insert into weatherdata(uid,tem,hum,light) values(?,?,?)';
+    var Params = [1,response.tem, response.hum, response.light];
 //执行查询
     connection.query(insertSQL, Params, function (err, result) {
 
