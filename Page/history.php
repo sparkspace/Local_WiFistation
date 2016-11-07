@@ -3,9 +3,9 @@
     $conn = connectDB();
 
 //取之前1小时温度
-$result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,7',$conn);
+$result_tem = $conn->query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,7');
 $result_tem_arr = array();   //存储数组
-while($rows=mysql_fetch_array($result_tem)){      //$rows是数组
+while($rows=mysqli_fetch_array($result_tem)){      //$rows是数组
     settype($rows['temperature'],'float');          //string变成float
     $result_tem_arr[] =$rows['temperature'];        //提取赋值
 }
@@ -14,10 +14,10 @@ $json_tem = json_encode($result_tem_arr);       //转化为json格式
 
 //取之前1小时湿度
 
-$result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,7',$conn);
+$result_hum = $conn->query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,7');
 
 $result_hum_arr = array();   //存储数组
-while($rows=mysql_fetch_array($result_hum)){      //$rows是数组
+while($rows=mysqli_fetch_array($result_hum)){      //$rows是数组
     settype($rows['humidity'],'float');          //string变成float
     $result_hum_arr[] =$rows['humidity'];        //提取赋值
 }
@@ -27,10 +27,10 @@ $json_hum = json_encode($result_hum_arr);       //转化为json格式
 
 //取之前1小时光照
 
-$result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,7',$conn);
+$result_ill = $conn->query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,7');
 
 $result_ill_arr = array();                           //存储数组
-while($rows=mysql_fetch_array($result_ill)){         //$rows是数组
+while($rows=mysqli_fetch_array($result_ill)){         //$rows是数组
     settype($rows['lightness'],'float');          //string变成float
     $result_ill_arr[] =$rows['lightness'];        //提取赋值
 }

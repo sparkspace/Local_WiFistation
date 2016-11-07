@@ -2,13 +2,13 @@
 include "php/database.php";
 $conn = connectDB();
 
-$result_tem = @mysql_query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,150',$conn);
+$result_tem = $conn->query('SELECT temperature FROM weatherdata ORDER BY id DESC LIMIT 0,150');
 $json_tem = average($result_tem,24,'temperature');
 
-$result_hum = @mysql_query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,150',$conn);
+$result_hum = $conn->query('SELECT humidity FROM weatherdata ORDER BY id DESC LIMIT 0,150');
 $json_hum = average($result_hum,24,'humidity');
 
-$result_ill = @mysql_query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,150',$conn);
+$result_ill = $conn->query('SELECT lightness FROM weatherdata ORDER BY id DESC LIMIT 0,150');
 $json_ill = average($result_ill,24,'lightness');
 $status = weather();                        //更换背景图片
 

@@ -1,12 +1,15 @@
 ﻿<?php
 
     function connectDB(){
-    $conn = @mysql_connect('localhost', 'root', '');
+    $conn = new mysqli('localhost','root','');
+     //   @mysql_connect('localhost', 'root', '');
     if (!$conn) {
         die("failed");
     }
-    @mysql_query("SET NAMES UTF8");
-    @mysql_select_db('wifistation', $conn) or die("connot find");
+    $conn->query("SET NAMES UTF8");
+    $conn->select_db('wifistation') or die("connot find");
+    //@mysql_query("SET NAMES UTF8");
+    //@mysql_select_db('wifistation', $conn) or die("connot find");
     return $conn;
     }
 
@@ -15,7 +18,8 @@
         $result_arr = array();
         $average =array();
         $sum = 0;
-        while($rows=@mysql_fetch_array($query_result)){      //$rows是数组
+        while($rows=mysqli_fetch_array($query_result)){
+            //while($rows=@mysql_fetch_array($query_result)){      //$rows是数组
             settype($rows[$type],'float');
             $result_arr[] =$rows[$type];
         }
