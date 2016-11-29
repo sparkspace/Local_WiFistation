@@ -2,14 +2,14 @@
 #define INTERVAL_NET      17000             //定义发送时间
 //传感器部分================================   
 #include <Wire.h>                                  //调用库  
-#include "ESP8266.h"
+#include "./ESP8266.h"
 #include "I2Cdev.h"                                //调用库  
 //温湿度   
 #include <SHT2x.h>
 //光照
 #define  sensorPin_1  A0
 
-#define SSID           "wzy_bupt"                   // cannot be longer than 32 characters!
+#define SSID           "VAIO"                   // cannot be longer than 32 characters!
 #define PASSWORD       "12345678"
 // Security can be WLAN_SEC_UNSEC, WLAN_SEC_WEP, WLAN_SEC_WPA or WLAN_SEC_WPA2
 #define WLAN_SECURITY   WLAN_SEC_WPA2
@@ -19,13 +19,16 @@
                                    // you're accessing is quick to respond, you can reduce this value.
 
 //WEBSITE     
-#define HOST_NAME    "192.168.43.60"             //可改成自己的服务器地址和端口
+#define HOST_NAME    "192.168.137.134"             //可改成自己的服务器地址和端口
 #define HOST_PORT   (3005)
 
 //3,传感器值的设置 
 float sensor_tem, sensor_hum, sensor_lux;                    //传感器温度、湿度、光照   
 char  sensor_tem_c[7], sensor_hum_c[7], sensor_lux_c[7] ;    //换成char数组传输
-ESP8266 wifi(Serial1);                                      //定义一个ESP8266（wifi）的对象
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(2, 3); /* RX:D3, TX:D2 */
+ESP8266 wifi(mySerial);
+//ESP8266 wifi(Serial1);                                      //定义一个ESP8266（wifi）的对象
 unsigned long net_time1 = millis();                          //数据上传服务器时间
 unsigned long sensor_time = millis();                        //传感器采样时间计时器
 
